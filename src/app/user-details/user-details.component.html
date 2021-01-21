@@ -1,0 +1,49 @@
+<div class="container">
+    <form #myForm="ngForm">
+        <h1>User Information Form</h1>
+       <div>
+           <label>Name</label>
+           <input class="form-control" name="name" [(ngModel)]='usersObj.name'/>
+       </div>
+       <div>
+        <label>Mobile Number</label>
+        <input class="form-control" name="mobile" [(ngModel)]='usersObj.mobile'/>
+    </div>
+    <div>
+        <label>Email</label>
+        <input class="form-control" name="email" [(ngModel)]='usersObj.email'/>
+    </div>
+    <div>
+        <label>Password</label>
+        <input class="form-control" name="pass" [(ngModel)]='usersObj.pass'/>
+    </div>
+    <div>
+        <br/>
+    <button type="button" class="btn btn-primary" (click)="addUser(myForm.value)" *ngIf=isEdit>Submit</button>
+    <button type="button" class="btn btn-primary" (click)="updateUser()" *ngIf=!isEdit>Update</button>
+
+</div>
+</form>
+    <table class="table">
+        <thead>
+         <tr>
+             <th>Name</th>
+             <th>Mobile</th>
+             <th>Email</th>
+             <th>Password</th>
+             <th>Edit</th>
+             <th>Delete</th>
+         </tr>
+        </thead>
+        <tbody *ngFor="let users of userDetails">
+        <tr>
+            <td>{{users.name}}</td>
+            <td>{{users.mobile}}</td>
+            <td>{{users.email}}</td>
+            <td>{{users.pass}}</td>
+            <td><button class="btn btn-warning" (click)="editUserDetails(users)">Edit</button></td>
+            <td><button class="btn btn-danger" (click)="deleteUserDetails(users)">Delete</button></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
